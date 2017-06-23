@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-const { generateMessage } = require("./utils/message");
+const { generateMessage, generateLocationMessage } = require("./utils/message");
 
 app.use(express.static(public));
 
@@ -27,7 +27,13 @@ io.on("connection", socket => {
   );
   socket.on("createMessage", (message, cb) => {
     io.emit("newMessage", generateMessage(message.from, message.text));
-    cb('Success!')
+    cb("Success!");
+  });
+  socket.on("createLocationMessage", coords => {
+    io.emit(
+      "newLocationMessage",
+      generateLocationMessage("LOLbrah", coords.latitude, coords.longitude)
+    );
   });
   socket.on("disconnect", () => {
     console.log("New Disconnect");
