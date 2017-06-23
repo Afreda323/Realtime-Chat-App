@@ -27,7 +27,7 @@ io.on("connection", socket => {
   );
   socket.on("createMessage", (message, cb) => {
     io.emit("newMessage", generateMessage(message.from, message.text));
-    cb("Success!");
+    cb();
   });
   socket.on("createLocationMessage", coords => {
     io.emit(

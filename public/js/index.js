@@ -33,7 +33,7 @@ $("#message-form").on("submit", function(e) {
       from: "IDK",
       text: text.val()
     },
-    function(data) {
+    function() {
       console.log("success");
       text.val("");
     }
@@ -42,17 +42,21 @@ $("#message-form").on("submit", function(e) {
 
 locateButton.on("click", function(e) {
   e.preventDefault();
+  
   if (!navigator.geolocation) {
     return alert("Geolocation not supported");
   }
+  locateButton.attr('disabled', 'disabled').text('Sending Location...');
   navigator.geolocation.getCurrentPosition(
     function(position) {
+      locateButton.removeAttr('disabled').text('Send Location');
       socket.emit("createLocationMessage", {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       });
     },
     function() {
+      locateButton.removeAttr('disabled').text('Send Location');
       alert("Unable to fetch location");
     }
   );

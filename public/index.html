@@ -5,18 +5,27 @@
     <title>Chat App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link href="css/style.css" rel="stylesheet">-->
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Hello world</h1>
-    <ol id="messages"></ol>
+<body class="chat">
 
-    <form id='message-form'>
-        <input id="message-text" name='message' placeholder='Message' type='text' />
-        <button>Send</button>
-        <button id='send-location'>Send Location</button>
-    </form>
+    <div class="chat__sidebar">
+        <h3>Peeps</h3>
+        <div id="users"></div>
+    </div>
+    <div class="chat__main">
+        <ol class="chat__messages" id="messages"></ol>
+        
+        <div class="chat__footer">
+            <form id='message-form'>
+            <input autocomplete="off" autofocus id="message-text" name='message' placeholder='Message' type='text' />
+            <button>Send</button>
+            <button id='send-location'>Send Location</button>
+        </form>
+        </div>
+    </div>
+
     <script src='/js/libs/jquery-3.2.1.min.js'></script>
     <script src="/reload/reload.js"></script>
     <script src='/socket.io/socket.io.js'></script>
