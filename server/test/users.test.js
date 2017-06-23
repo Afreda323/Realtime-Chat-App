@@ -34,21 +34,21 @@ describe("Users", () => {
     expect(users.users).toEqual([user]);
   });
   it("Should remove a user", () => {
-      const deletedUser = users.removeUser('1');
-      expect(users.users.length).toBe(2);
-      expect(deletedUser.id).toBe('1')
+    const deletedUser = users.removeUser("1");
+    expect(users.users.length).toBe(2);
+    expect(deletedUser.id).toBe("1");
   });
   it("Should not remove a user", () => {
-      const deletedUser = users.removeUser('33');
-      expect(users.users.length).toBe(3);
-      expect(deletedUser).toNotExist()
+    const deletedUser = users.removeUser("33");
+    expect(users.users.length).toBe(3);
+    expect(deletedUser).toNotExist();
   });
   it("Should return a user", () => {
-    const gotUser = users.getUser('1');
-    expect(gotUser.id).toBe('1');
+    const gotUser = users.getUser("1");
+    expect(gotUser.id).toBe("1");
   });
   it("Should not return a user", () => {
-    const gotUser = users.getUser('33');
+    const gotUser = users.getUser("33");
     expect(gotUser).toNotExist();
   });
   it("Should return Noders", () => {
