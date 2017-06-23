@@ -10,9 +10,17 @@
 
 <body>
     <h1>Hello world</h1>
+    <ol id="messages"></ol>
+
+    <form id='message-form'>
+        <input id="message-text" name='message' placeholder='Message' type='text' />
+        <button>Send</button>
+    </form>
+    <script src='/js/libs/jquery-3.2.1.min.js'></script>
     <script src="/reload/reload.js"></script>
     <script src='/socket.io/socket.io.js'></script>
-    <script src='/js/main.js'></script>
+    <script src='/js/socket.js'></script>
+    <script src='/js/message.js'></script>
 </body>
 
 </html>

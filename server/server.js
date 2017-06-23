@@ -25,8 +25,9 @@ io.on("connection", socket => {
     "newMessage",
     generateMessage("Admin", "New person joined")
   );
-  socket.on("createMessage", message => {
+  socket.on("createMessage", (message, cb) => {
     io.emit("newMessage", generateMessage(message.from, message.text));
+    cb('Success!')
   });
   socket.on("disconnect", () => {
     console.log("New Disconnect");
