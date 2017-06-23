@@ -24,6 +24,7 @@ io.on("connection", socket => {
     if (!isReal(params.name || !isReal(params.room))) {
       return cb("Name and Room name required");
     }
+    params.room = params.room.toLowerCase()
     socket.join(params.room);
     users.removeUser(socket.id);
     users.addUser(socket.id, params.name, params.room);
