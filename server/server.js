@@ -10,33 +10,29 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
+const { generateMessage } = require("./utils/message");
+
 app.use(express.static(public));
 
 io.on("connection", socket => {
   console.log("New connection");
-  socket.emit("newMessage", {
-    from: "Admin",
-    text: "Welcome to the chat app",
-    createdAt: new Date().getTime()
-  });
-  socket.broadcast.emit("newMessage", {
-    from: "Admin",
-    text: "New person joined",
-    createdAt: new Date().getTime()
-  });
+
+  socket.emit(
+    "newMessage",
+    generateMessage("Admin", "Welcome to the chat app")
+  );
+  socket.broadcast.emit(
+    "newMessage",
+    generateMessage("Admin", "New person joined")
+  );
   socket.on("createMessage", message => {
-    io.emit("newMessage", {
-      from: message.from,
-      text: message.text,
-      createdAt: new Date().getTime()
-    });
+    io.emit("newMessage", generateMessage(message.from, message.text));
   });
   socket.on("disconnect", () => {
     console.log("New Disconnect");
   });
 });
 
-//Live reload on local
 if (port === 3000) {
   const reload = require("reload");
   reload(server, app);
