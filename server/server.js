@@ -1,7 +1,6 @@
 const path = require("path");
 const http = require("http");
 const express = require("express");
-const reload = require("reload");
 const socketIO = require("socket.io");
 
 const public = path.join(__dirname, "../public");
@@ -31,7 +30,6 @@ io.on("connection", socket => {
   });
 });
 
-reload(server, app);
 
 server.listen(port, () => {
   console.log("Up on " + port);
