@@ -20,10 +20,11 @@ io.on("connection", socket => {
       createdAt: new Date().getTime()
   })
   socket.on('createMessage', (message) => {
-      console.log('New message');
-      console.log('From: ', message.from);
-      console.log('Text: ', message.text);
-      console.log('At: ', new Date().getTime())
+      io.emit('newMessage', {
+          from: message.from,
+          text: message.text,
+          createdAt: new Date().getTime()
+      })
   })
   socket.on("disconnect", () => {
     console.log("New Disconnect");

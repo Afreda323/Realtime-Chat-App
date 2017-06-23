@@ -1,4 +1,3 @@
-(function() {
   let socket = io();
   socket.on("connect", function() {
     console.log("Connected");
@@ -14,4 +13,3 @@
     console.log("From: ", message.from);
     console.log("Text: ", message.text);
   });
-})();
