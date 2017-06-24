@@ -1,5 +1,4 @@
-# Sup Brahs, 
-## Chitz - Chat App
+# Chitz - Chat App
 
 [Test Here](https://chitz.herokuapp.com)
 
